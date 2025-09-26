@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Llama - The Intelligent Scheduler</title>
+    <h2> class="subtitle"Business Overview | Market Analysis | Product Strategy</h2>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Additional custom styles can go here if needed */
+        body {
+            color: #4A3F7A;
+        }
+        .bg-indigo-50, .bg-indigo-100, .bg-indigo-200, .bg-indigo-400, .bg-indigo-500, .bg-indigo-600, .bg-indigo-700, .bg-indigo-800, .bg-indigo-900, .bg-blue-600, .bg-blue-500, .bg-blue-400 {
+            background-color: #E06B1E !important;
+        }
+        .text-indigo-50, .text-indigo-100, .text-indigo-200, .text-indigo-400, .text-indigo-500, .text-indigo-600, .text-indigo-700, .text-indigo-800, .text-indigo-900, .text-blue-600, .text-blue-500, .text-blue-400 {
+            color: #E06B1E !important;
+        }
+        .hover\:bg-indigo-50:hover, .hover\:bg-indigo-100:hover, .hover\:bg-indigo-200:hover, .hover\:bg-indigo-400:hover, .hover\:bg-indigo-500:hover, .hover\:bg-indigo-600:hover, .hover\:bg-indigo-700:hover, .hover\:bg-indigo-800:hover, .hover\:bg-indigo-900:hover, .hover\:bg-blue-600:hover, .hover\:bg-blue-500:hover, .hover\:bg-blue-400:hover {
+            background-color: #E06B1E !important;
+        }
+        .hover\:text-indigo-600:hover, .hover\:text-indigo-700:hover, .hover\:text-indigo-800:hover, .hover\:text-indigo-900:hover, .hover\:text-blue-600:hover, .hover\:text-blue-500:hover, .hover\:text-blue-400:hover {
+            color: #E06B1E !important;
+        }
+        .text-gray-900, .text-black, .text-gray-800 {
+            color: #4A3F7A !important;
+        }
+        .bg-gray-900, .bg-black {
+            background-color: #4A3F7A !important;
+        }
+        .border-gray-900, .border-black {
+            border-color: #4A3F7A !important;
+        }
+        .hover\:bg-gray-900:hover, .hover\:bg-black:hover {
+            background-color: #4A3F7A !important;
+        }
+        .hover\:text-gray-900:hover, .hover\:text-black:hover {
+            color: #4A3F7A !important;
+        }
+        .ring-gray-200 {
+            box-shadow: 0 0 0 1px #E06B1E !important;
+        }
+        .border-indigo-200, .border-indigo-400, .border-indigo-600, .border-indigo-700, .border-indigo-800, .border-indigo-900, .border-blue-600, .border-blue-500, .border-blue-400 {
+            border-color: #E06B1E !important;
+        }
+        .border-gray-800 {
+            border-color: #4A3F7A !important;
+        }
+        /* SVG and inline style fixes */
+        svg[fill*="#3B82F6"], svg[fill*="#2563EB"], svg[fill*="#1D4ED8"], svg[fill*="#000"], svg[fill*="#111"], svg[fill*="#222"], svg[fill*="#333"], svg[fill*="#444"], svg[fill*="#555"], svg[fill*="#666"], svg[fill*="#22223B"], svg[fill*="#2D3748"] {
+            fill: #E06B1E !important;
+        }
+        svg[stroke*="#3B82F6"], svg[stroke*="#2563EB"], svg[stroke*="#1D4ED8"], svg[stroke*="#000"], svg[stroke*="#111"], svg[stroke*="#222"], svg[stroke*="#333"], svg[stroke*="#444"], svg[stroke*="#555"], svg[stroke*="#666"], svg[stroke*="#22223B"], svg[stroke*="#2D3748"] {
+            stroke: #E06B1E !important;
+        }
+    </style>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MHHLMPTX');</script>
+    </head>
+<body class="bg-gray-50 text-gray-800" style="display:none;">
+    <div id="password-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(30,32,44,0.97);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+        <div style="background:#fff;padding:2rem 2.5rem;border-radius:1rem;box-shadow:0 8px 32px rgba(0,0,0,0.2);max-width:90vw;width:350px;text-align:center;">
+            <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:#4A3F7A;">Protected Site</h2>
+            <p style="margin-bottom:1.5rem;color:#444;">Please enter the password to access this site.</p>
+            <input id="site-password" type="password" placeholder="Password" style="width:100%;padding:0.75rem 1rem;border-radius:0.5rem;border:1px solid #ccc;font-size:1rem;margin-bottom:1rem;">
+            <button id="password-submit" style="width:100%;background:#4A3F7A;color:#fff;font-weight:700;padding:0.75rem 0;border:none;border-radius:0.5rem;font-size:1rem;">Enter</button>
+            <div id="password-error" style="color:#E07A42;margin-top:1rem;display:none;">Incorrect password. Try again.</div>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var PASSWORD = 'HarryLlama44';
+        function unlockSite() {
+            document.body.style.display = '';
+            document.getElementById('password-overlay').style.display = 'none';
+            sessionStorage.setItem('site_access_granted', '1');
+        }
+        if (sessionStorage.getItem('site_access_granted') === '1') {
+            unlockSite();
+        } else {
+            document.body.style.display = '';
+            document.getElementById('password-overlay').style.display = 'flex';
+            document.getElementById('site-password').focus();
+            document.getElementById('password-submit').onclick = function() {
+                var val = document.getElementById('site-password').value;
+                if (val === PASSWORD) {
+                    unlockSite();
+                } else {
+                    document.getElementById('password-error').style.display = 'block';
+                }
+            };
+            document.getElementById('site-password').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') document.getElementById('password-submit').click();
+            });
+        }
+    })();
+        <img src="../../../../../../../../var/folders/kw/9sl5gv3x7w5f55f7lrrl9k_4bj76cn/T/TemporaryItems/NSIRD_screencaptureui_f53Uyh/Screenshot 2025-09-25 at 10.38.29 PM.png"
+             height="1408" width="994"/></script>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHHLMPTX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="https://media.lucid-north.com/blog/hl_transparent_Layers.png" alt="Harry Llama Logo" class="h-10 w-auto">
+                    <span class="text-2xl font-bold text-gray-900">
+                        <span class="text-indigo-600">Harry</span>Llama
+                    </span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#overview" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300">Overview</a>
+                    <a href="#value" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300">Value Prop</a>
+                    <a href="#features" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300">Features</a>
+                    <a href="#market" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300">Market</a>
+                    <a href="#strategy" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300">Strategy</a>
+                    <a href="#tech" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300">Technology</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-indigo-600 transition-colors duration-300">Pricing</a>
+                </nav>
+                <a href="#" class="hidden md:inline-block bg-indigo-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow">Request a Demo</a>
+                 <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+             <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#overview" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded-md">Overview</a>
+                <a href="#value" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded-md">Value Prop</a>
+                <a href="#features" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded-md">Features</a>
+                <a href="#market" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded-md">Market</a>
+                <a href="#strategy" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded-md">Strategy</a>
+                <a href="#tech" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded-md">Technology</a>
+                <a href="#pricing" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100 rounded-md">Pricing</a>
+                <a href="#" class="block w-full text-left bg-indigo-600 text-white font-semibold mt-2 px-4 py-2 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow">Request a Demo</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="bg-white">
+            <div class="container mx-auto px-6 py-20 md:py-32 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                    Transform from Scheduler to <span class="text-indigo-600">Strategic Leader</span>.
+                </h1>
+                <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                    Harry Llama is the AI-powered assistant for K-12 administrators. Automate substitute scheduling, eliminate logistical errors, and reclaim 99+ hours per year to focus on what truly matters: your students and teachers.
+                </p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <a href="#" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg">Request a Demo</a>
+                    <a href="#features" class="bg-gray-200 text-gray-800 font-semibold px-8 py-3 rounded-lg hover:bg-gray-300 transition-all duration-300">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">An Intelligent Assistant for School Administrators</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Designed to save time, minimize errors, optimize costs, and enhance staff morale by turning unstructured documents into actionable scheduling data.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://media.lucid-north.com/blog/Dashboard.png" alt="Harry Llama Dashboard" class="rounded-xl shadow-2xl ring-1 ring-gray-200">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-900">The Problem: The Daily Scramble</h3>
+                        <p class="mt-4 text-gray-600">Every morning, Assistant Principals spend 60-90 minutes juggling spreadsheets, making frantic phone calls, and manually assigning substitute teachers. This reactive process is inefficient, costly, and pulls leadership away from instructional priorities.</p>
+                        <h3 class="text-2xl font-semibold text-gray-900 mt-8">The Solution: Automated Intelligence</h3>
+                        <p class="mt-4 text-gray-600">Harry Llama ingests your school's unique schedules and absence reports. Our AI engine then automates the entire assignment process based on your rules, finding the best coverage in minutes, not hours. Reclaim up to 87% of your scheduling time and focus on leadership.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="value" class="py-20 bg-indigo-50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+
+                    <img src="images/tagline.png" alt="On average, schools using Harry Llama for daily sub coverage save 99 hours of work each school year. That is equivalent to..." class="mx-auto w-full max-w-3xl h-auto rounded-xl mb-12">
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <img src="images/morning.png" alt="199 Morning Arrival Duties" class="mx-auto w-full h-auto rounded-xl shadow-lg">
+                        <img src="images/obs.png" alt="250 Teacher Observations" class="mx-auto w-full h-auto rounded-xl shadow-lg">
+                        <img src="images/meeting.png" alt="334 Parent Meetings" class="mx-auto w-full h-auto rounded-xl shadow-lg">
+                        <img src="images/prom.png" alt="16 Senior Proms" class="mx-auto w-full h-auto rounded-xl shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="bg-gray-100 rounded-2xl p-10 text-center">
+                    <h2 class="text-3xl font-bold text-gray-900">Discover Your Hidden Costs</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Find out exactly how much leadership salary your school wastes on manual substitute scheduling.</p>
+                    <div class="mt-8">
+                        <a href="https://harryllama.lucid-north.com/calculator" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-lg">
+                            Calculate Your Savings
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Core Features</h2>
+                    <p class="mt-4 text-lg text-gray-600">Everything needed to automate & streamline substitute management.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 mb-6">
+                            <img src="images/ai_1.png" alt="AI Document Processing Icon" class="w-12 h-12">
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">AI-Powered Processing</h3>
+                        <p class="mt-2 text-gray-600">Interprets the rules and context of your master schedule, analyzes daily absence reports, and assign substitutes.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 mb-6">
+                             <img src="images/onboarding.png" alt="Onboarding Icon" class="w-10 h-10">
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Comprehensive Onboarding</h3>
+                        <p class="mt-2 text-gray-600">A guided 7-step wizard configures the application to your school's specific needs, including schedule rotation, bell schedules, district closing calendar, and co-teacher identification.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 mb-6">
+                           <img src="images/4_tier.png" alt="Intelligent Scheduling Icon" class="w-10 h-10">
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">4-Tier Intelligent Scheduling</h3>
+                        <p class="mt-2 text-gray-600">Automatically finds the best coverage by prioritizing co-teachers, external subs, and internal staff before flagging an absence for manual review.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center justify-center h-16 w-16 mb-6">
+                            <img src="images/dashboard.png" alt="Dashboard Icon" class="w-10 h-10">
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900">Administrative Dashboard</h3>
+                        <p class="mt-2 text-gray-600">A centralized hub providing a real-time overview of daily absences, filled assignments, and unfilled positions that require immediate attention.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="market" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">A Market Ready for Disruption</h2>
+                    <p class="mt-4 text-lg text-gray-600">The teacher scheduling software market is growing rapidly, and legacy systems are failing to meet modern needs of school administrators.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                     <div class="bg-gray-100 p-6 rounded-xl shadow-lg">
+                        <p class="text-sm font-medium text-indigo-600">Market Growth (CAGR)</p>
+                        <p class="text-3xl font-bold text-gray-900 mt-2">10.7%</p>
+                        <p class="text-sm text-gray-500 mt-1">Projected to reach $2.1B by 2033.</p>
+                    </div>
+                     <div class="bg-gray-100 p-6 rounded-xl shadow-lg">
+                        <p class="text-sm font-medium text-indigo-600">AI in Education (CAGR)</p>
+                        <p class="text-3xl font-bold text-gray-900 mt-2">47%</p>
+                         <p class="text-sm text-gray-500 mt-1">Rapid adoption of intelligent solutions.</p>
+                    </div>
+                     <div class="bg-gray-100 p-6 rounded-xl shadow-lg col-span-2 md:col-span-1">
+                         <img src="https://media.lucid-north.com/blog/hours_spent.png" alt="Bar chart showing annual hours spent on sub coverage before and after Harry Llama" class="rounded-lg">
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Competitive Landscape</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+                    <div class="bg-indigo-50 text-white p-6 rounded-xl shadow-lg border border-indigo-200">
+                        <h4 class="font-bold">Red Rover</h4>
+                        <p class="text-sm opacity-90">Modern, mobile-first disruptor.</p>
+                    </div>
+                    <div class="bg-indigo-50 text-white p-6 rounded-xl shadow-lg border border-indigo-200">
+                        <h4 class="font-bold">SmartFind Express</h4>
+                        <p class="text-sm opacity-90">Legacy leader with a bulky UX.</p>
+                    </div>
+                     <div class="bg-indigo-50 text-white p-6 rounded-xl shadow-lg border border-indigo-200">
+                        <h4 class="font-bold">ReadySub</h4>
+                        <p class="text-sm opacity-90">Enterprise solution for large districts.</p>
+                    </div>
+                     <div class="bg-indigo-50 text-white p-6 rounded-xl shadow-lg border border-indigo-200">
+                        <h4 class="font-bold">SubstituteAlert</h4>
+                        <p class="text-sm opacity-90">Complementary app, not a full solution.</p>
+                    </div>
+                     <div class="bg-indigo-50 text-white p-6 rounded-xl shadow-lg border border-indigo-200">
+                        <h4 class="font-bold">EZ School Apps</h4>
+                        <p class="text-sm opacity-90">Budget option with limited features.</p>
+                    </div>
+                </div>
+
+                 <div class="mt-20">
+                     <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">The Harry Llama Opportunity</h3>
+                     <div class="grid md:grid-cols-3 gap-8">
+                         <div class="bg-white p-8 rounded-xl shadow-lg">
+                             <h4 class="font-semibold text-indigo-700">Address a User Experience Gap</h4>
+                             <p class="mt-2 text-gray-600">Legacy systems are clunky and inefficient. We offer a modern, intuitive interface that administrators love.</p>
+                         </div>
+                         <div class="bg-white p-8 rounded-xl shadow-lg">
+                             <h4 class="font-semibold text-indigo-700">Provide Quantifiable ROI</h4>
+                             <p class="mt-2 text-gray-600">Our 99-hour time savings translate to over <b>$5,000 in administrative opportunity costs</b>, offering a clear return on investment.</p>
+                         </div>
+                         <div class="bg-white p-8 rounded-xl shadow-lg">
+                             <h4 class="font-semibold text-indigo-700">Target an Underserved Market</h4>
+                             <p class="mt-2 text-gray-600">We are perfectly positioned for mid-market suburban districts in New Jersey and beyond, a segment seeking value without enterprise complexity.</p>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="tech" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Proven & Scalable Technology</h2>
+                    <p class="mt-4 text-lg text-gray-600">Built on a robust, modern technology stack to ensure reliability and performance.</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="p-8">
+                             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-center">
+                                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">Flask (Python)</h4>
+                                    <p class="text-sm text-gray-500">Backend</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">SQLAlchemy</h4>
+                                    <p class="text-sm text-gray-500">Database ORM</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">OpenAI GPT-4</h4>
+                                    <p class="text-sm text-gray-500">AI Integration</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">PyMuPDF</h4>
+                                    <p class="text-sm text-gray-500">PDF Processing</p>
+                                </div>
+                                 <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">HTML5/CSS3</h4>
+                                    <p class="text-sm text-gray-500">Frontend</p>
+                                </div>
+                                 <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">JavaScript</h4>
+                                    <p class="text-sm text-gray-500">Frontend</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">Amazon RDS</h4>
+                                    <p class="text-sm text-gray-500">Database Hosting</p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg shadow-sm">
+                                    <h4 class="font-semibold">AWS Lambda</h4>
+                                    <p class="text-sm text-gray-500">Serverless AI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-20">
+                     <h3 class="text-2xl font-bold text-center text-gray-900 mb-12">Deployment & Operational Costs</h3>
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-4 text-gray-900">Recommended AWS Services</h4>
+                            <div class="overflow-x-auto bg-white rounded-lg shadow">
+                                <table class="min-w-full text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="text-left font-semibold p-3">Service</th>
+                                            <th class="text-left font-semibold p-3">Role</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr><td class="p-3">AWS Elastic Beanstalk</td><td class="p-3">Main web app hosting</td></tr>
+                                        <tr><td class="p-3">Amazon RDS</td><td class="p-3">Managed PostgreSQL database</td></tr>
+                                        <tr><td class="p-3">AWS Lambda</td><td class="p-3">AI PDF parsing function</td></tr>
+                                        <tr><td class="p-3">Amazon S3</td><td class="p-3">Secure PDF storage</td></tr>
+                                        <tr><td class="p-3">Amazon SES</td><td class="p-3">Transactional emails</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                         <div>
+                            <h4 class="text-xl font-semibold mb-4 text-gray-900">Estimated Running Costs</h4>
+                            <div class="overflow-x-auto bg-white rounded-lg shadow">
+                               <table class="min-w-full text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="text-left font-semibold p-3">Category</th>
+                                            <th class="text-left font-semibold p-3">Item</th>
+                                            <th class="text-left font-semibold p-3">Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr><td class="p-3">Software</td><td class="p-3">Domain Name</td><td class="p-3">~$20 / year</td></tr>
+                                        <tr><td class="p-3">Software</td><td class="p-3">AI API Services</td><td class="p-3">Variable (per PDF)</td></tr>
+                                        <tr><td class="p-3">Software</td><td class="p-3">Email Service</td><td class="p-3">Free tier, then ~$1/1k emails</td></tr>
+                                        <tr><td class="p-3">Business</td><td class="p-3">Insurance</td><td class="p-3">$50 - $150 / month</td></tr>
+                                        <tr><td class="p-3">Business</td><td class="p-3">Payment Processing</td><td class="p-3">2.9% + $0.30 / transaction</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="pricing" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Simple, Transparent Pricing</h2>
+                    <p class="mt-4 text-lg text-gray-600">Choose the plan that fits your district's size. All features included.</p>
+                </div>
+                <div class="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-center">
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-lg font-semibold text-indigo-600">Small Districts</h3>
+                        <p class="text-sm text-gray-500 mt-1">&le;500 students</p>
+                        <p class="text-4xl font-bold text-gray-900 mt-4">$2,495</p>
+                        <p class="text-gray-500 font-medium">per year</p>
+                        <a href="#" class="block w-full text-center mt-8 bg-gray-200 text-gray-800 font-semibold px-6 py-3 rounded-lg hover:bg-gray-300 transition-all duration-300">Get Started</a>
+                    </div>
+                    <div class="bg-indigo-600 text-white p-10 rounded-xl shadow-2xl transform lg:scale-110">
+                        <h3 class="text-lg font-semibold text-indigo-200">Mid-size Districts</h3>
+                        <p class="text-sm text-indigo-200 mt-1">501-1,200 students</p>
+                        <p class="text-5xl font-bold mt-4">$4,249</p>
+                        <p class="text-indigo-200 font-medium">per year</p>
+                        <a href="#" class="block w-full text-center mt-8 bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg hover:bg-indigo-50 transition-all duration-300">Choose Plan</a>
+                    </div>
+                     <div class="bg-gray-100 p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-lg font-semibold text-indigo-600">Large Districts</h3>
+                        <p class="text-sm text-gray-500 mt-1">1,201+ students</p>
+                        <p class="text-4xl font-bold text-gray-900 mt-4">$5,495</p>
+                        <p class="text-gray-500 font-medium">per year</p>
+                         <a href="#" class="block w-full text-center mt-8 bg-gray-200 text-gray-800 font-semibold px-6 py-3 rounded-lg hover:bg-gray-300 transition-all duration-300">Get Started</a>
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                     <p class="text-gray-600">Discounts are available for Title I and multi-school districts. Contact us for a custom quote.</p>
+                 </div>
+            </div>
+        </section>
+
+        <section id="strategy" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Market Deep Dive & Strategy</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">Understanding the user's core needs and the market opportunity is key to our strategy.</p>
+                </div>
+                <div class="mt-16 bg-white p-10 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Competitive Gaps Harry Llama Fills</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+                 <!-- Intelligence Gap -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h4 class="text-xl font-semibold text-indigo-600">1. Intelligence Gap</h4>
+                    <p class="mt-2 text-gray-600">Competitors focus on tracking; Harry Llama provides optimization.</p>
+                </div>
+        <!-- Speed Gap -->
+        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <h4 class="text-xl font-semibold text-indigo-600">2. Speed Gap</h4>
+            <p class="mt-2 text-gray-600">Others facilitate manual processes; Harry Llama automates decision-making.</p>
+        </div>
+        <!-- Simplicity Gap -->
+        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <h4 class="text-xl font-semibold text-indigo-600">3. Simplicity Gap</h4>
+            <p class="mt-2 text-gray-600">Complex enterprise systems vs. Harry Llama's focused solution.</p>
+        </div>
+        <!-- ROI Gap -->
+        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <h4 class="text-xl font-semibold text-indigo-600">4. ROI Gap</h4>
+            <p class="mt-2 text-gray-600">Vague efficiency claims vs. Harry Llama's 92% time reduction metric.</p>
+        </div>
+    </div>
+</div>
+        <!-- START: Product Positioning Section -->
+<div class="mt-20">
+    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-12 text-center">Product Positioning</h3>
+
+    <!-- Core Positioning Strategy -->
+    <div class="bg-white p-10 rounded-2xl shadow-xl mb-12">
+        <h4 class="text-2xl font-bold text-center text-gray-900 mb-8">Core Positioning Strategy</h4>
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-indigo-50 text-white p-6 rounded-xl text-center shadow-lg">
+                <p class="text-sm font-semibold opacity-80">Category Definition</p>
+                <p class="text-2xl font-bold mt-1">Intelligent Scheduling Automation</p>
+            </div>
+            <div class="bg-gray-800 text-white p-6 rounded-xl text-center shadow-lg">
+                <p class="text-sm font-semibold opacity-80">Primary Message</p>
+                <p class="text-2xl font-bold mt-1">"From Chaos to Calm in 5 Minutes"</p>
+            </div>
+        </div>
+
+        <div>
+            <h5 class="text-xl font-semibold text-center text-gray-800 mb-4">Value Proposition Hierarchy</h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                    <p class="text-3xl font-bold text-indigo-600">1</p>
+                    <p class="font-bold text-gray-800">Time Value</p>
+                    <p class="text-sm text-gray-600">92% reduction in scheduling time</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                    <p class="text-3xl font-bold text-indigo-600">2</p>
+                    <p class="font-bold text-gray-800">Financial Value</p>
+                    <p class="text-sm text-gray-600">$5,800+ annual salary savings</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                    <p class="text-3xl font-bold text-indigo-600">3</p>
+                    <p class="font-bold text-gray-800">Strategic Value</p>
+                    <p class="text-sm text-gray-600">Empower instructional leaders</p>
+                </div>
+                 <div class="bg-gray-50 p-6 rounded-lg text-center">
+                    <p class="text-3xl font-bold text-indigo-600">4</p>
+                    <p class="font-bold text-gray-800">Emotional Value</p>
+                    <p class="text-sm text-gray-600">Reclaim your mornings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messaging Framework -->
+    <div>
+        <h4 class="text-2xl font-bold text-center text-gray-900 mb-8">Messaging Framework by Audience</h4>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Assistant Principals -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                <h5 class="text-xl font-bold text-gray-900">For Assistant Principals</h5>
+                <ul class="mt-4 space-y-3 text-gray-600">
+                    <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Lead:</strong> <span>"Reclaim 2+ hours every morning"</span></li>
+                    <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Support:</strong> <span>"Handle 15 absences in 5 minutes"</span></li>
+                    <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Proof:</strong> <span>"92% time reduction documented"</span></li>
+                </ul>
+            </div>
+            <!-- Principals -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                <h5 class="text-xl font-bold text-gray-900">For Principals</h5>
+                <ul class="mt-4 space-y-3 text-gray-600">
+                     <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Lead:</strong> <span>"Transform your AP into an instructional leader"</span></li>
+                    <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Support:</strong> <span>"Free up 114 hours per year for strategic work"</span></li>
+                    <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Proof:</strong> <span>"$15,000 in recovered salary value"</span></li>
+                </ul>
+            </div>
+            <!-- District Leaders -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                <h5 class="text-xl font-bold text-gray-900">For District Leaders</h5>
+                 <ul class="mt-4 space-y-3 text-gray-600">
+                     <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Lead:</strong> <span>"Reduce substitute costs by 20%"</span></li>
+                    <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Support:</strong> <span>"Maximize utilization, minimize overtime"</span></li>
+                    <li class="flex items-start"><strong class="w-16 flex-shrink-0 text-indigo-600">Proof:</strong> <span>"ROI in the first semester"</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Product Positioning Section -->
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Jobs-to-be-Done Analysis</h3>
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <h4 class="text-xl font-semibold text-indigo-600">Functional Jobs</h4>
+                            <p class="mt-2 text-gray-600">The core operational tasks administrators need to accomplish.</p>
+                            <blockquote class="mt-4 border-l-4 border-indigo-200 pl-4 text-gray-700 italic">
+                                "When I arrive at school, I want to quickly create a complete substitute coverage schedule before classes begin."
+                            </blockquote>
+                             <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                                <li><strong>Success:</strong> Schedule completed in &lt;15 mins.</li>
+                                <li><strong>Pain Point:</strong> Manual calls, spreadsheet juggling.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <h4 class="text-xl font-semibold text-green-600">Emotional Jobs</h4>
+                            <p class="mt-2 text-gray-600">The feelings they want to experience and avoid.</p>
+                             <blockquote class="mt-4 border-l-4 border-green-200 pl-4 text-gray-700 italic">
+                                "I want to feel in control and proactive, rather than reactive and overwhelmed."
+                            </blockquote>
+                             <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                                <li><strong>Experience:</strong> Confidence, competence.</li>
+                                <li><strong>Avoid:</strong> Stress, chaos, feeling behind.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <h4 class="text-xl font-semibold text-blue-600">Social Jobs</h4>
+                            <p class="mt-2 text-gray-600">How they want to be perceived by their peers and staff.</p>
+                            <blockquote class="mt-4 border-l-4 border-blue-200 pl-4 text-gray-700 italic">
+                                "I want to be known as an innovative leader who runs a tight, efficient building."
+                            </blockquote>
+                             <ul class="mt-4 space-y-2 text-sm text-gray-600">
+                                <li><strong>Outcome:</strong> Professional respect, career advancement.</li>
+                                <li><strong>Risk:</strong> Appearing disorganized or behind the times.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- START: Competitive Differentiation Framework Section -->
+<div class="py-20 bg-indigo-50"> <!-- This class creates the #E06B1E background -->
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl md:text-4xl font-bold text-white">Competitive Differentiation</h3>
+            <p class="mt-4 text-lg text-white/90 max-w-3xl mx-auto">Harry Llama's unique territory is defined by what we eliminate, reduce, raise, and create for school administrators.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1: Eliminate -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="flex items-center mb-4">
+                    <svg class="w-8 h-8 text-indigo-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    <h4 class="text-xl font-bold text-gray-900">What We Eliminate</h4>
+                </div>
+                <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                    <li>Morning phone call marathons</li>
+                    <li>Paper & spreadsheet tracking</li>
+                    <li>Scheduling conflicts</li>
+                    <li>Uncovered classes</li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Reduce -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                 <div class="flex items-center mb-4">
+                    <svg class="w-8 h-8 text-indigo-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0v-8m0 8l-8-8-4 4-6-6"></path></svg>
+                    <h4 class="text-xl font-bold text-gray-900">What We Reduce</h4>
+                </div>
+                <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                    <li>Time on logistics (92%)</li>
+                    <li>Stress and anxiety</li>
+                    <li>Substitute idle time</li>
+                </ul>
+            </div>
+
+            <!-- Card 3: Raise -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                 <div class="flex items-center mb-4">
+                    <svg class="w-8 h-8 text-indigo-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    <h4 class="text-xl font-bold text-gray-900">What We Raise</h4>
+                </div>
+                 <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                    <li>Professional satisfaction</li>
+                    <li>Substitute utilization</li>
+                    <li>Data-driven decisions</li>
+                    <li>Work-life balance</li>
+                </ul>
+            </div>
+
+            <!-- Card 4: Create -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="flex items-center mb-4">
+                    <svg class="w-8 h-8 text-indigo-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <h4 class="text-xl font-bold text-gray-900">What We Create</h4>
+                </div>
+                <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                    <li>Intelligent optimization</li>
+                    <li>Predictive absence insights</li>
+                    <li>Real-time ROI visibility</li>
+                    <li>Strategic leadership time</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Competitive Differentiation Framework Section -->
+
+                <div class="mt-20">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-12 text-center">New Jersey Market Sizing Analysis</h3>
+                    <div class="grid lg:grid-cols-3 gap-8 text-center">
+
+                        <!-- TAM Card -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                            <h4 class="text-2xl font-bold text-indigo-800">TAM (Total Addressable Market)</h4>
+                            <p class="text-sm text-gray-500 mt-2">Market segmentation by district size based on student enrollment.</p>
+                            <div class="mt-6 space-y-4 text-left flex-grow">
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <p class="font-bold">Small Districts (&le;500 students)</p>
+                                    <p class="text-sm text-gray-600">Est. Districts: <span class="font-semibold">240</span></p>
+                                    <p class="text-sm text-gray-600">Potential Revenue: <span class="font-semibold">$598,800</span></p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <p class="font-bold">Mid-size Districts (501-1,200 students)</p>
+                                    <p class="text-sm text-gray-600">Est. Districts: <span class="font-semibold">250</span></p>
+                                    <p class="text-sm text-gray-600">Potential Revenue: <span class="font-semibold">$1,062,250</span></p>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <p class="font-bold">Large Districts (1,201+ students)</p>
+                                    <p class="text-sm text-gray-600">Est. Districts: <span class="font-semibold">100</span></p>
+                                    <p class="text-sm text-gray-600">Potential Revenue: <span class="font-semibold">$549,500</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SAM Card with Hover -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg relative group overflow-hidden flex flex-col">
+                            <h4 class="text-2xl font-bold text-indigo-800">SAM (Serviceable Addressable)</h4>
+                             <p class="text-sm text-gray-500 mt-2">The segment of the market that is realistically accessible.</p>
+                             <div class="mt-6 space-y-4 text-left flex-grow">
+                                <p class="text-lg">Total Serviceable Annual Market: <span class="font-bold text-indigo-600">$2.04M</span></p>
+                                <p class="text-lg">Conservative SAM Estimate: <span class="font-bold text-indigo-600">$1.87M</span></p>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <p class="font-bold">Accessible Segments Revenue:</p>
+                                    <ul class="text-sm text-gray-600 list-disc list-inside mt-2">
+                                        <li>Small Districts: <span class="font-semibold">$573,500</span></li>
+                                        <li>Mid-size Districts: <span class="font-semibold">$998,515</span></li>
+                                        <li>Large Districts: <span class="font-semibold">$467,075</span></li>
+                                    </ul>
+                                </div>
+                             </div>
+                             <div class="absolute inset-0 bg-gray-900 text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-full">
+                                <h5 class="font-bold text-lg text-indigo-400">Market Accessibility Analysis</h5>
+                                <p class="text-sm mt-2">Excludes districts with complex procurement (e-Procurement portals, extensive certification) which bars smaller vendors. This accounts for ~10.4% of students.</p>
+                                <h6 class="font-semibold mt-4">Primary Target Market:</h6>
+                                <ul class="text-sm mt-1 space-y-1 list-disc list-inside">
+                                    <li>Suburban districts in affluent counties</li>
+                                    <li>Rural districts in northwestern NJ</li>
+                                    <li>Districts with streamlined procurement</li>
+                                </ul>
+                             </div>
+                             <div class="absolute bottom-0 left-0 right-0 p-1 text-center bg-gray-200 text-xs font-semibold text-gray-600 group-hover:opacity-0 transition-opacity">HOVER FOR DEEP DIVE</div>
+                        </div>
+
+                        <!-- SOM Card with Hover -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg relative group overflow-hidden flex flex-col">
+                            <h4 class="text-2xl font-bold text-indigo-800">SOM (Serviceable Obtainable)</h4>
+                            <p class="text-sm text-gray-500 mt-2">A 5-year projection of the market share we can realistically capture.</p>
+                            <div class="mt-6 space-y-4 text-left flex-grow">
+                                <p class="text-lg">Total Revenue (5 Yrs): <span class="font-bold text-indigo-600">$1.52M</span></p>
+                                <p class="text-lg">Run Rate by Yr 5: <span class="font-bold text-indigo-600">$780k</span></p>
+                                <p class="text-lg">Market Share by Yr 5: <span class="font-bold text-indigo-600">36%</span></p>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <p class="font-bold">Penetration Strategy:</p>
+                                     <ul class="text-sm text-gray-600 list-disc list-inside mt-2">
+                                        <li>Yr 1: 10 pilot districts (1.8%)</li>
+                                        <li>Yr 2: 25 districts (4.5%)</li>
+                                        <li>Yr 5: 200 districts (36%)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                             <div class="absolute inset-0 bg-gray-900 text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out transform group-hover:translate-y-0 translate-y-full">
+                                <h5 class="font-bold text-lg text-indigo-400">Conservative Assumptions</h5>
+                                <p class="text-sm mt-2">Estimates are conservative due to long sales cycles in education, budget constraints, and the need to build trust as a new vendor in a competitive market.</p>
+                                <h6 class="font-semibold mt-4">Growth Factors:</h6>
+                                <ul class="text-sm mt-1 space-y-1 list-disc list-inside">
+                                    <li>Word-of-mouth is critical</li>
+                                    <li>Case studies will drive adoption</li>
+                                    <li>Seasonal budget cycles affect sales</li>
+                                </ul>
+                             </div>
+                             <div class="absolute bottom-0 left-0 right-0 p-1 text-center bg-gray-200 text-xs font-semibold text-gray-600 group-hover:opacity-0 transition-opacity">HOVER FOR DEEP DIVE</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mt-20 bg-white p-10 rounded-2xl shadow-xl">
+                     <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Strategic Positioning</h3>
+                     <div class="text-center mb-10">
+                        <p class="text-lg text-gray-600">Our primary value proposition is simple and powerful:</p>
+                        <p class="text-2xl font-semibold text-indigo-600 mt-2">"Transform from Scheduler to Strategic Leader"</p>
+                     </div>
+                     <div class="grid md:grid-cols-3 gap-8">
+                         <div>
+                             <h4 class="font-semibold text-gray-800">For Assistant Principals:</h4>
+                             <p class="mt-2 text-gray-600">"Reclaim 99 hours annually for what matters - supporting teachers and students, not juggling schedules."</p>
+                         </div>
+                         <div>
+                             <h4 class="font-semibold text-gray-800">For Principals:</h4>
+                             <p class="mt-2 text-gray-600">"Free your assistant principals to be instructional leaders, not substitute schedulers."</p>
+                         </div>
+                         <div>
+                             <h4 class="font-semibold text-gray-800">For Superintendents:</h4>
+                             <p class="mt-2 text-gray-600">"Demonstrate measurable ROI: $5,000+ in administrative time savings for a modest investment."</p>
+                         </div>
+                     </div>
+                 </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+             <div class="grid md:grid-cols-3 gap-8">
+                 <div>
+                     <a href="#" class="flex items-center space-x-2">
+                        <img src="https://media.lucid-north.com/blog/hl_transparent_Layers.png" alt="Harry Llama Logo" class="h-10 w-auto">
+                        <span class="text-xl font-bold text-white"><span class="text-indigo-400">Harry</span>Llama</span>
+                     </a>
+                     <p class="mt-2 text-gray-400">The Intelligent Scheduler for K-12 Schools.</p>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-gray-200">Quick Links</h4>
+                     <nav class="mt-4 space-y-2">
+                         <a href="#overview" class="block text-gray-400 hover:text-white">Overview</a>
+                         <a href="#value" class="block text-gray-400 hover:text-white">Value Prop</a>
+                         <a href="#features" class="block text-gray-400 hover:text-white">Features</a>
+                         <a href="#market" class="block text-gray-400 hover:text-white">Market Analysis</a>
+                         <a href="#strategy" class="block text-gray-400 hover:text-white">Strategy</a>
+                         <a href="#pricing" class="block text-gray-400 hover:text-white">Pricing</a>
+                     </nav>
+                 </div>
+                 <div>
+                     <h4 class="font-semibold text-gray-200">Contact Us</h4>
+                     <p class="mt-4 text-gray-400">Ready to transform your school's operations? Get in touch to schedule a personalized demo.</p>
+                     <a href="#" class="inline-block mt-4 bg-indigo-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-indigo-600">Request a Demo</a>
+                 </div>
+             </div>
+             <div class="mt-12 border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                 <p>&copy; 2025 Harry Llama Scheduler. All Rights Reserved.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+    </script>
+</body>
+</html>
